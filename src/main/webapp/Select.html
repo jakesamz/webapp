@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script
+	src="jquery-editable-select.js"></script>
+<link
+	href="jquery-editable-select.css"
+	rel="stylesheet">
+</head>
+
+<body>
+	<select id="editable-select">
+		<option>还在</option>
+		<option>阿斯蒂芬</option>
+		<option>BMW</option>
+		<option>速度速度</option>
+	</select>
+	<script>
+		$(document).ready(function() {
+			$('#editable-select').editableSelect();
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-12 17:49:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.jake.Emp" table="EMP" schema="ADMIN">
+        <composite-id name="id" class="com.jake.EmpId">
+            <key-property name="employeeId" type="java.lang.Integer">
+                <column name="EMPLOYEE_ID" precision="6" scale="0" />
+            </key-property>
+            <key-property name="firstName" type="string">
+                <column name="FIRST_NAME" length="20" />
+            </key-property>
+            <key-property name="lastName" type="string">
+                <column name="LAST_NAME" length="25" />
+            </key-property>
+            <key-property name="email" type="string">
+                <column name="EMAIL" length="25" />
+            </key-property>
+            <key-property name="phoneNumber" type="string">
+                <column name="PHONE_NUMBER" length="20" />
+            </key-property>
+            <key-property name="hireDate" type="date">
+                <column name="HIRE_DATE" length="7" />
+            </key-property>
+            <key-property name="jobId" type="string">
+                <column name="JOB_ID" length="10" />
+            </key-property>
+            <key-property name="salary" type="big_decimal">
+                <column name="SALARY" precision="8" />
+            </key-property>
+            <key-property name="commissionPct" type="big_decimal">
+                <column name="COMMISSION_PCT" precision="2" />
+            </key-property>
+            <key-property name="managerId" type="java.lang.Integer">
+                <column name="MANAGER_ID" precision="6" scale="0" />
+            </key-property>
+            <key-property name="departmentId" type="java.lang.Short">
+                <column name="DEPARTMENT_ID" precision="4" scale="0" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

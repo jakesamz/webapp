@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script><!-- 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="jquery-table-convert2json.js"></script>
+<script src="jquery.tabletojson.js"></script> -->
+<script src="table2json.js"></script> 
+</head>
+<body>
+
+	<table id="answered">
+		<tbody>
+			<tr>
+				<td data-id="user.email">email@email.com</td>
+				<td data-id="meme.yodawg">Yo Dog! I Heard you liked answers, so
+					I answered your question, with a method wrapped in a jQuery plugin!</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<form action=""></form>
+	<!-- <tr><td><input name="username"/>名字</td><td><input name="address"/>地址</td></tr> -->
+	 <table id="sample">
+		<tr>
+				<td><input name="name" value="" /></td>
+				<td><input name="addr" value="" /></td>
+				<td><select name="sex"><option value="m">male</option><option value="f">female</option></select></td>
+				<td><input name="position" value="" /></td>
+		</tr>
+	</table>
+	<table id="mytable" border="0px red">
+		<tr>
+			<td>名字</td>
+			<td>地址</td>
+		</tr>
+		<tr>
+			<td><input name="name" value="" /></td>
+			<td><input name="addr" value="" /></td>
+			<td><select name="sex"><option value="m">male</option><option value="f">female</option></select></td>
+			<td><input name="position" value="" /></td>
+		</tr>
+		<tr>
+			<td><input name="name" value="" /></td>
+			<td><input name="addr" value="" /></td>
+			<td><select name="sex"><option value="m">male</option><option value="f">female</option></select></td>
+			<td><input name="position" value="" /></td>
+		</tr>
+	</table>
+	<button id="save">save</button>
+	<button id="add">add</button>
+	<ul>
+		<li>list item 1</li>
+		<li>list item 2</li>
+		<li>list item 3</li>
+		<li>list item 4</li>
+		<li>list item 5</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		var tabledata = [];
+		$('#mytable').find('tr').each(function(i){
+			var row = {};
+			if(i == 0){
+				return;
+			}
+			$(this).find("input").each(function(i){
+				var name = $(this).attr('name');
+				var val  = $(this).val();
+				row[name] = val;
+			});
+			tabledata.push(row);
+		})
+	   // alert(JSON.stringify(tabledata));
+		$('#save').click(function(){
+			alert(JSON.stringify($('#mytable').convertTable2Json()));
+		});
+		$('#add').click(function(){
+			$('#mytable').add('#sample');
+		});
+		//alert(JSON.stringify($('#mytable').convertTable2Json()));
+	});
+</script>
+</html>

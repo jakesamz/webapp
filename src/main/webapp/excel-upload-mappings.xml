@@ -1,0 +1,6 @@
+<mappings>
+	<object name="OPEX_BUDGET_UPLOAD" class="com.jake.Emp ">
+		<column header="a" attribute="a"/>
+		<column header="b" attribute="b"/>
+	</object>
+</mappings>

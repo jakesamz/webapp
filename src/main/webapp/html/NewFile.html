@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+
+  alert(3975737.30000001.toFixed(2) == (3750695.58 + 225041.72).toFixed(2));
+  alert(temp_round(100000/100001*100,8));
+  
+	function temp_round(v,e) 
+	{ 
+		var t=1; 
+		for(;e>0;t*=10,e--); 
+		for(;e<0;t/=10,e++); 
+		return Math.round(v*t)/t; 
+	}
+</script>
+</html>

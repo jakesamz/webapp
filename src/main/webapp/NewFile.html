@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+	<form id="form" action="xxx.do">
+		<!-- <input type="text" name="name" value="xxx" /> <input type="checkbox"
+			name="sports" checked value="basketball" /> <input type="checkbox"
+			name="sports" checked value="badmiton" /> -->
+			<table id="">
+				<tr><td><input type="text" name="name" value="xxx" /></td><td><input type="text" name="age" value="1"/></td></tr>
+				<tr><td><input type="text" name="name" value="xxx1" /></td><td><input type="text" name="age" value="2"/></td></tr>
+			</table>
+			
+			<select id="city">
+				<option value="bj">北京</option>
+				<option value="sh">上海</option>
+				<option value="gz">广州</option>
+				<option value="sz">深圳</option>
+			</select>
+	</form>
+	<a href="javascript:uncheckByPureJS()">By pure js</a>
+	<a href="javascript:uncheckByJquery()">By jquery</a>
+	<a href="javascript:;" onclick="ajax()">ajax</a>
+	<select value="3">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
+</body>
+<script type="text/javascript">
+	/* 	function ajax(){
+	 console.log('--;');
+	 $.ajax({
+	 url : 'welcome',
+	 type : 'post',
+	 dataType : 'jsonp',
+	 success : function(data) {
+	 console.log(data.flag);
+	 }
+	 });
+	 } */
+	/* $(document).ready(function() {
+		//console.log($('#form').serializeArray());
+		//$("#city option[value='gz']").attr('selected', true);
+		alert($("#city").val());
+	}); */
+	
+	var arrStr = '["a1","b2"]';
+	 
+	var arr = eval('(' + arrStr + ')'); 
+	
+	console.log(arr);
+</script>
+</html>
