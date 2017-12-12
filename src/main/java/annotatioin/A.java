@@ -1,4 +1,4 @@
-package com.anno;
+package annotatioin;
 
 @MyAnno(value="new value is xxx")
 public class A {

@@ -11,7 +11,6 @@ import java.util.Date;
 public  class MyJob implements Job {
 
 	
-    @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
     	System.out.println("times = " + new Date());
         
