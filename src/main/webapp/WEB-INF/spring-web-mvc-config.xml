@@ -21,16 +21,16 @@
 			</value>
 		</property>
 	</bean>
-
+<!-- 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/><!-- 对所有uri进行拦截 -->
-			<mvc:exclude-mapping path="/login" /><!-- 排除拦截的uri:进入登录页面的uri -->
-			<mvc:exclude-mapping path="/doLogin" /><!-- 排除拦截的uri：处理登录的uri -->
-			<bean class="interceptor.LoginInterceptor" /><!-- 登录拦截器类 -->
+			<mvc:mapping path="/**"/>对所有uri进行拦截
+			<mvc:exclude-mapping path="/login" />排除拦截的uri:进入登录页面的uri
+			<mvc:exclude-mapping path="/doLogin" />排除拦截的uri：处理登录的uri
+			<bean class="interceptor.LoginInterceptor" />登录拦截器类
 		</mvc:interceptor>
 	</mvc:interceptors>
-
+ -->
 
 	<mvc:resources location="/html/" mapping="/html1x/**"
 		cache-period="20" />
