@@ -55,9 +55,9 @@
 	<!-- End: Let spring read xml files and start initializing Application Context -->
 	
 	<!-- Self-defined Listener, to initialize self-defined params when App starts up -->
-	<listener>
-		<listener-class>CountStartListener</listener-class>
-	</listener>
+	<!-- <listener>
+		<listener-class>com.linjw.web.listeners.CountStartListener</listener-class>
+	</listener> -->
 	
 	<!-- Start Spring mvc: to read spring-web-mvc-config.xml -->
 	<servlet>

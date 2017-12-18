@@ -7,11 +7,13 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd"
        default-lazy-init="true">
 
-    <bean 
-class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
-	<context:component-scan base-package="com.jake" />
+	<!-- <context:component-scan base-package="com.linjw" >
+	</context:component-scan> -->
 	
-	<bean id="resultMessage" class="com.jake.ResultMessage">
+	<bean id="resultMessage" class="com.linjw.business.beans.ResultMessage">
 		<property name="success" value="buy" />
+	</bean>
+	
+	<bean id="myemp" class="com.linjw.business.beans.Emp" scope="prototype">
 	</bean>
 </beans>

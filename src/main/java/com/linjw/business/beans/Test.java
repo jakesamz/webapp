@@ -24,6 +24,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,14 +38,18 @@ import org.springframework.web.util.WebUtils;
 public class Test implements org.springframework.web.servlet.mvc.Controller{
 	
 	private SessionFactory sessionFactory;
-	//@Autowired
-	//private ResultMessage message;
 	
-	@Resource(name="xx")
 	@Autowired(required=false)
 	private Emp emp;	
 	public Test() {
 	}
+	
+	@Autowired
+	@Qualifier("thistest")
+	private com.linjw.business.controller.anno.bean.Test thistest;
+	
+	@Autowired
+	private String auditAspect;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -58,6 +63,7 @@ public class Test implements org.springframework.web.servlet.mvc.Controller{
 	
 	@RequestMapping("/form")
 	public String form(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println(emp);
 		System.out.println("-------------:" + getRequestUri(req));
 		req.setAttribute("testValue", "a\"bc");
 		//System.out.println("sessionFactory:" + sessionFactory.openSession().getNamedQuery(""));

@@ -9,7 +9,12 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd"
 	default-lazy-init="true">
 
-	<bean id="auditAspect" class="java.lang.String">
+	<bean id="auditAspect" class="java.lang.String" scope="prototype">
+		<constructor-arg>
+			<value>whattf</value>
+		</constructor-arg>
+	</bean>
+	<bean id="auditAspect1" class="java.lang.String">
 		<constructor-arg>
 			<value>whattf</value>
 		</constructor-arg>
