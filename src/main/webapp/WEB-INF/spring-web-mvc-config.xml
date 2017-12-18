@@ -9,10 +9,12 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
 	default-lazy-init="true">
 
+	<bean id="globalValidator" class="com.linjw.business.validation.validator.GlobalValidator">
+	</bean>
 
 	<context:component-scan base-package="com.linjw"
 		scope-resolver="com.linjw.context.resolvers.ComponentScopeResolver"></context:component-scan>
-	<mvc:annotation-driven />
+	<mvc:annotation-driven validator="globalValidator"/>
 
 <!-- 	<bean id="simpleControllerTest" class="com.jake.SimpleControllerTest" />
  -->
