@@ -1,4 +1,4 @@
-package com.linjw.business.validation.beans;
+package com.linjw.spring.validation.beans;
 
 public class Person {
 

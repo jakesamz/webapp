@@ -1,10 +1,10 @@
-package com.linjw.business.validation.validator;
+package com.linjw.spring.validation.validator;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.linjw.business.validation.beans.Person;
+import com.linjw.spring.validation.beans.Person;
 
 public class PersonValidator implements Validator{
 

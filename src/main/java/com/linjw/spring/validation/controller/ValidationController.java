@@ -1,4 +1,4 @@
-package com.linjw.business.validation.controller;
+package com.linjw.spring.validation.controller;
 
 import javax.validation.Valid;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.linjw.business.validation.beans.Person;
-import com.linjw.business.validation.validator.PersonValidator;
+import com.linjw.spring.validation.beans.Person;
+import com.linjw.spring.validation.validator.PersonValidator;
 
 @Controller
 public class ValidationController {

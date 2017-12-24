@@ -1,12 +1,10 @@
-package com.linjw.business.conversion.beans;
+package com.linjw.spring.conversion.beans;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.format.annotation.NumberFormat;
-import org.springframework.format.annotation.NumberFormat.Style;
 
 public class Person {
 

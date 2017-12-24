@@ -1,9 +1,9 @@
-package com.linjw.business.conversion.controller;
+package com.linjw.spring.conversion.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.linjw.business.conversion.beans.Person;
+import com.linjw.spring.conversion.beans.Person;
 
 
 @Controller

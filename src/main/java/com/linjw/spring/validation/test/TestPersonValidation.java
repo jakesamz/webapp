@@ -1,4 +1,4 @@
-package com.linjw.business.validation.test;
+package com.linjw.spring.validation.test;
 
 import java.util.List;
 
@@ -7,12 +7,11 @@ import org.springframework.validation.DataBinder;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
-import com.linjw.business.validation.beans.Person;
-import com.linjw.business.validation.validator.PersonValidator;
+import com.linjw.spring.validation.beans.Person;
+import com.linjw.spring.validation.validator.PersonValidator;
 
 public class TestPersonValidation {
 
-	
 	public static void main(String[] args) {
 		Person person = new Person();
 		person.setAge(190);

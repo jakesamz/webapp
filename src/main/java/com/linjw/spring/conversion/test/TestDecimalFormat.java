@@ -1,4 +1,4 @@
-package com.linjw.business.conversion.test;
+package com.linjw.spring.conversion.test;
 
 import java.text.DecimalFormat;
 

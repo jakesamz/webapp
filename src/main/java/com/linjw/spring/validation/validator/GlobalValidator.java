@@ -1,4 +1,4 @@
-package com.linjw.business.validation.validator;
+package com.linjw.spring.validation.validator;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
