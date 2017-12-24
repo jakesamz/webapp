@@ -3,3 +3,4 @@ encoding//src/main/java/com/linjw/business/beans/Test.java=UTF-8
 encoding//src/main/resources/errormsg_en_US.properties=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
 encoding//src/main/resources/system_params.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/views/jsp/register-page.jsp=UTF-8

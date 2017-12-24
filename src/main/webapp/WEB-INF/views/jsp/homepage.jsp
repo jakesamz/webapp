@@ -1,4 +1,3 @@
-<%@page import="com.jake.Emp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="/webapptaglib" prefix="webapp"%>

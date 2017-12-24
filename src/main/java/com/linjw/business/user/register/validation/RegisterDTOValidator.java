@@ -4,7 +4,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.linjw.business.user.register.dto.RegisterDTO;
-import com.linjw.business.validation.beans.ValidationBean;
+import com.linjw.spring.validation.beans.ValidationBean;
 
 public class RegisterDTOValidator implements Validator {
 
