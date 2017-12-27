@@ -9,8 +9,8 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
 	default-lazy-init="true">
 
-	<bean id="globalValidator" class="com.linjw.business.validation.validator.GlobalValidator">
-	</bean>
+	<!-- <bean id="globalValidator" class="com.linjw.business.validation.validator.GlobalValidator">
+	</bean> -->
 
 	<bean id="conversionService"
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
@@ -19,7 +19,7 @@
 
 	<context:component-scan base-package="com.linjw"
 		scope-resolver="com.linjw.context.resolvers.ComponentScopeResolver"></context:component-scan>
-	<mvc:annotation-driven validator="globalValidator" conversion-service="conversionService"/>
+	<mvc:annotation-driven conversion-service="conversionService"/>
 
 	<!-- <bean id="simpleControllerTest" class="com.jake.SimpleControllerTest" 
 		/> -->
