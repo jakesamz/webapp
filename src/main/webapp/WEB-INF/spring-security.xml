@@ -15,7 +15,8 @@
 	<authentication-manager>
 	  <authentication-provider>
 	    <user-service>
-		<user name="linjw" password="1234" authorities="ROLE_USER" />
+			<user name="linjw" password="{MD5}81dc9bdb52d04dc20036dbd8313ed055" authorities="ROLE_ADMIN" />
+			<user name="jake" password="{MD5}81dc9bdb52d04dc20036dbd8313ed055" authorities="ROLE_USER" />
 	    </user-service>
 	  </authentication-provider>
 	</authentication-manager>
