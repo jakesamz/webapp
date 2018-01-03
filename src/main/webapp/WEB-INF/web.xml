@@ -51,7 +51,7 @@
 		<param-value>
             /WEB-INF/spring-context.xml
             /WEB-INF/xxxttt.xml
-            /WEB-INF/spring-security.xml
+            /WEB-INF/spring-security2.xml
 		</param-value>
 	</context-param>
 

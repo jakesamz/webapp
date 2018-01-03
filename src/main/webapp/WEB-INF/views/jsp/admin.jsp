@@ -7,7 +7,12 @@
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 	   <h2>Welcome : ${pageContext.request.userPrincipal.name}
-           | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a></h2>
+           | </h2>
+           <form method="post" action="logout" id="form-logout">
+           		<button>Logout</button>
+		    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>         
+			</form>
 	</c:if>
+	
 </body>
 </html>
