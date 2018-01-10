@@ -58,6 +58,12 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<listener>
+		<listener-class>
+			org.springframework.security.web.session.HttpSessionEventPublisher
+		</listener-class>
+	</listener>
 	<!-- End: Let spring read xml files and start initializing Application Context -->
 
 	<!-- Self-defined Listener, to initialize self-defined params when App starts 

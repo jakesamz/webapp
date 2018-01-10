@@ -9,11 +9,14 @@
 
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-		<form-login login-page="/loginpage" default-target-url="/home.jsp"/><!--url should start with '/' -->
+		<form-login login-page="/loginpage" default-target-url="/home.jsp" authentication-failure-url="/secondlogindenied.html"/><!--url should start with '/' -->
 		<logout logout-success-url="/index.jsp"/>
 		<remember-me key="123123"/>
+		<session-management session-fixation-protection="migrateSession"><!-- applying fixation protection -->
+			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+		</session-management>
 	</http>
-
+	
 	<authentication-manager erase-credentials="false">
 		<authentication-provider user-service-ref="myUserDetailsService">
 		</authentication-provider>
