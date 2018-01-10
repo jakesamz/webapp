@@ -12,7 +12,7 @@
 		<form-login/><!--url should start with '/' -->
 	</http>
 
-	<authentication-manager>
+	<authentication-manager erase-credentials="false">
 		<authentication-provider><!-- The <authentication-provider> element creates a DaoAuthenticationProvider bean  -->
 			<user-service><!-- the <user-service> element creates an InMemoryDaoImpl -->
 				<user name="linjw" password="{MD5}81dc9bdb52d04dc20036dbd8313ed055"

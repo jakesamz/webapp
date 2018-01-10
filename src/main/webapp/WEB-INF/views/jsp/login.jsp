@@ -8,6 +8,7 @@
 		<input name="password">
 		<input type="submit"/>
 		<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+		<p>Remember Me: <input type="checkbox" name="remember-me" /></p>
 	</form>
 </body>
 </html>
