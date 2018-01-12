@@ -12,7 +12,18 @@
 		<form-login login-page="/loginpage" default-target-url="/home.jsp" authentication-failure-url="/secondlogindenied.html"/><!--url should start with '/' -->
 		<logout logout-success-url="/index.jsp"/>
 		<remember-me key="123123"/>
-		<session-management session-fixation-protection="migrateSession"><!-- applying fixation protection -->
+		
+		<!--  
+		Spring-Security Session管理：
+		session-fixation-protection启动“session固定攻击”保护，属性值解释：
+		none: 不启动保护机制
+		newSession: 新建一个新的空session，并且Spring-Security相关的属性会被复制到新的session里
+		migrateSession: 新建一个新的session，并且复制旧session所有的属性到新的session里
+		changeSessionId: 不新建session，保留原有session，并使用容器提供的session固定保护机制方法HttpServletRequest#changeSessionId()-->
+		<session-management session-fixation-protection="migrateSession">
+			<!-- 
+			同步控制：max-session=1，表示一个已登录的用户同一时间不能重复登录。
+			-->
 			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
 		</session-management>
 	</http>
