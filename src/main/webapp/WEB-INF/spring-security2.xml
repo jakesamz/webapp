@@ -41,6 +41,11 @@
 		</authentication-provider>
 	</authentication-manager>
 
+	<!-- 
+	myUserDetailsService：实现UserDetailsService接口的loadUserByUsername方法，
+	UserDetailsService纯属定义为一个获取用户的dao的接口类，无其他功能，它不校验登录信息。
+	在spring-security中，登录校验由AuthenticationManager来实现。
+	 -->
 	<beans:bean id="myUserDetailsService"
 		class="com.linjw.business.user.login.UserLoginService"/>
 		
