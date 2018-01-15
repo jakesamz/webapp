@@ -24,7 +24,7 @@ public class XssController {
 	
 	@RequestMapping(value="submitXXS", method=RequestMethod.POST)
 	public String submitXXS(HttpServletRequest request, String xssInput) {
-		request.setAttribute("xssInput", StringEscapeUtils.escapeHtml4(xssInput));
+		request.setAttribute("xssInput", XssFilter.escapeHtml4(xssInput));
 		return "xxsPage";
 	}
 	
