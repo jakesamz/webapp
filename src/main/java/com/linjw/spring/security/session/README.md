@@ -1,8 +1,9 @@
 # How to get User Session from spring-security?
 There are two ways.
 1. 使用spring-scurity提供的方法(**Recomended**)
-2. 手动从session中获取，session的key值是<code>SPRING_SECURITY_CONTEXT</code>，存放于<code>HttpSessionSecurityContextRepository</code>
-参考<code>UserSessionService</code>
+2. 手动从session中获取，session的key值是<code>SPRING_SECURITY_CONTEXT</code>，存放于类<code>HttpSessionSecurityContextRepository</code>
+
+代码参考<code>UserSessionService</code>
 
 
 # Core Components 核心类
