@@ -19,17 +19,6 @@ import org.springframework.security.core.userdetails.UserDetails;
  * 另外，SecurityContext的实例对象存放在thread-local中。
  * 详细参考spring-security 文档 
  * 9.2 Components
- * 
- * <pre>
- * Core Component的作用如下：
- * 
- * SecurityContextHolder, to provide access to the SecurityContext.
- * SecurityContext, to hold the Authentication and possibly request-specific security information.
- * Authentication, to represent the principal in a Spring Security-specific manner.
- * GrantedAuthority, to reflect the application-wide permissions granted to a principal.
- * UserDetails, to provide the necessary information to build an Authentication object from your application’s DAOs or other source of security data.
- * UserDetailsService, to create a UserDetails when passed in a String-based username (or certificate ID or the like).
- * </pre>
  * @author linjw
  *
  */
