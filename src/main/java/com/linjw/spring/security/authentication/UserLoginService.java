@@ -1,4 +1,4 @@
-package com.linjw.business.user.login;
+package com.linjw.spring.security.authentication;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
