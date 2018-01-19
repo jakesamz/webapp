@@ -1,5 +1,10 @@
 package com.linjw.business.utils.excel;
 
+/**
+ * A testing Class
+ * @author Administrator
+ *
+ */
 public class Student {
 
 	@Column(actualColName="id")

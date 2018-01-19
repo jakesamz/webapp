@@ -1,5 +1,10 @@
 package com.linjw.business.utils.excel;
 
+/**
+ * Exception thrown if template's format is wrong.
+ * @author Administrator
+ *
+ */
 public class TemplateFormatException extends Exception {
 
 	/**

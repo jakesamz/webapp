@@ -1,5 +1,10 @@
 package com.linjw.business.utils.excel;
 
+/**
+ * Thrown if the submitted file is not an excel file.
+ * @author Administrator
+ *
+ */
 public class NotAnExcelFileException extends Exception {
 
 	/**

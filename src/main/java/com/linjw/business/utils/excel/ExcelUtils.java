@@ -23,11 +23,6 @@ public class ExcelUtils {
 	 */
 	public static final String OFFICE_EXCEL_V2010_SUFFIX = "xlsx";
 
-	public static final String EMPTY = "";
-	public static final String DOT = ".";
-	public static final String LIB_PATH = "lib";
-	public static final String NOT_EXCEL_FILE = " is Not a Excel file!";
-	public static final String PROCESSING = "Processing...";
 
 	public static void main(String[] args) throws IOException {
 		String filePath = ExcelUtils.class.getResource("").getPath() + "student-data.xlsx";
@@ -63,8 +58,8 @@ public class ExcelUtils {
 	}
 
 	/**
-	 * Check which version of The Excel file is. Throw exception if Excel file path
-	 * is illegal.
+	 * Check which version of the submitted excel file is.
+	 * If file is valid, then process... 
 	 * 
 	 * @param path
 	 *            the Excel file

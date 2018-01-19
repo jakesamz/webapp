@@ -5,6 +5,12 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+
+/**
+ * Interface that reads excel.
+ * @author Administrator
+ *
+ */
 public interface ExcelReader {
 
 	List<Object> read(String filePath, Class<?> clazz)
