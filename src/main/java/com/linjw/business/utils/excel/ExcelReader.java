@@ -13,8 +13,8 @@ import java.util.List;
  */
 public interface ExcelReader {
 
-	List<Object> read(String filePath, Class<?> clazz)
-			throws FileNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException,
+	<T> List<T> read(String filePath, Class<T> clazz)
+			throws FileNotFoundException, InstantiationException, IllegalAccessException,
 			InvocationTargetException, IOException, TemplateFormatException, NoSuchMethodException, SecurityException;
 
 }

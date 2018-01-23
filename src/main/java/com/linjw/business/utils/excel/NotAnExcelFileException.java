@@ -13,7 +13,9 @@ public class NotAnExcelFileException extends Exception {
 	private static final long serialVersionUID = -2846107719770746608L;
 
 	
-	
+	public NotAnExcelFileException(String message) {
+		super(message);
+	}
 	
 	
 }

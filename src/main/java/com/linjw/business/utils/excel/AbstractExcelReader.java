@@ -19,11 +19,11 @@ public abstract class AbstractExcelReader implements ExcelReader {
 
 	public static String getSuffiex(String path) {
 		if (StringUtils.isBlank(path)) {
-			throw new IllegalArgumentException(path + " excel file path is either null or empty");
+			return null;
 		}
 		int index = path.lastIndexOf(".");
 		if (index == -1) {
-			throw new IllegalArgumentException(path + " suffiex is either null or empty");
+			throw null;
 		}
 		return path.substring(index + 1, path.length());
 	}
@@ -42,9 +42,12 @@ public abstract class AbstractExcelReader implements ExcelReader {
 		List<String> wrongCols = new ArrayList<String>();
 		for (int curColNum = 0; curColNum < colNum; curColNum++) {
 			XSSFCell cell = xssfRow.getCell(curColNum);
-			if (cell == null) {
+			/*if (cell == null) {
 				wrongCols.add("col number: " + curColNum + ",col name : blank");
 				continue;
+			}*/
+			if(cell == null) {
+				columnHeader[curColNum] = null;
 			}
 			String columnValue = cell.getStringCellValue();
 			if (map.get(columnValue) == null) {

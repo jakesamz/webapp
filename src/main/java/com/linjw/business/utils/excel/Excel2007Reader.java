@@ -27,13 +27,13 @@ import org.springframework.cglib.core.ReflectUtils;
  */
 public class Excel2007Reader extends AbstractExcelReader {
 
-	public List<Object> read(String filePath, Class<?> clazz) throws InstantiationException, IllegalAccessException,
+	public <T> List<T> read(String filePath, Class<T> clazz) throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException, IOException, TemplateFormatException, NoSuchMethodException, SecurityException {
 
 		System.out.println("" + filePath);
 		InputStream is = new FileInputStream(filePath);
 		XSSFWorkbook xssfWorkbook = new XSSFWorkbook(is);
-		List<Object> list = new ArrayList<Object>();
+		List<T> list = new ArrayList<T>();
 		// Read the Sheet
 		for (int numSheet = 0; numSheet < 1; numSheet++) {
 			XSSFSheet xssfSheet = xssfWorkbook.getSheetAt(numSheet);
@@ -48,7 +48,7 @@ public class Excel2007Reader extends AbstractExcelReader {
 			for (int curRowNum = 1; curRowNum <= rowNum; curRowNum++) {
 				XSSFRow xssfRow = xssfSheet.getRow(rowNum);
 				if (xssfRow != null) {
-					Object obj = clazz.newInstance();
+					T obj = clazz.newInstance();
 					for (int curColNum = 0; curColNum < columnHeader.length; curColNum++) {
 						String columnName = columnHeader[curColNum];
 						Field field = map.get(columnName);

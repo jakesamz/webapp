@@ -17,14 +17,14 @@ import org.springframework.cglib.core.ReflectUtils;
 
 public class Excel2003Reader extends AbstractExcelReader {
 
-	public List<Object> read(String filePath, Class<?> clazz) throws InstantiationException, IllegalAccessException,
+	public <T> List<T> read(String filePath, Class<T> clazz) throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException, IOException {
 
 		System.out.println("processing " + filePath);
 		InputStream is = new FileInputStream(filePath);
 		HSSFWorkbook hssfWorkbook = new HSSFWorkbook(is);
 
-		List<Object> list = new ArrayList<Object>();
+		List<T> list = new ArrayList<T>();
 		// Read the Sheet
 		for (int numSheet = 0; numSheet < 1; numSheet++) {
 			HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
@@ -38,7 +38,7 @@ public class Excel2003Reader extends AbstractExcelReader {
 			for (int curRowNum = 1; curRowNum <= rowNum; curRowNum++) {
 				HSSFRow hssfRow = hssfSheet.getRow(rowNum);
 				if (hssfRow != null) {
-					Object obj = clazz.newInstance();
+					T obj = clazz.newInstance();
 					for (int curColNum = 0; curColNum < colNum; curColNum++) {
 						String columnName = columnHeader[curColNum];
 						Field[] f = clazz.getFields();

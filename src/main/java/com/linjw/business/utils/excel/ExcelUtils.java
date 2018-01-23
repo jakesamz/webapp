@@ -3,10 +3,8 @@ package com.linjw.business.utils.excel;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 
 public class ExcelUtils {
 
@@ -24,39 +22,6 @@ public class ExcelUtils {
 	public static final String OFFICE_EXCEL_V2010_SUFFIX = "xlsx";
 
 
-	public static void main(String[] args) throws IOException {
-		String filePath = ExcelUtils.class.getResource("").getPath() + "student-data.xlsx";
-		List<?> list = null;
-		try {
-			list = readExcel(filePath, Student.class);
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TemplateFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotAnExcelFileException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(list);
-	}
-
 	/**
 	 * Check which version of the submitted excel file is.
 	 * If file is valid, then process... 
@@ -69,14 +34,13 @@ public class ExcelUtils {
 	 * @throws IOException
 	 * @throws InstantiationException
 	 * @throws InvocationTargetException
-	 * @throws IllegalAccessException
 	 * @throws SecurityException
 	 * @throws NoSuchMethodException
 	 * @throws TemplateFormatException
 	 * @throws NotAnExcelFileException 
 	 */
-	public static List<Object> readExcel(String path, Class<?> clazz)
-			throws FileNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException,
+	public static <T> List<T> readExcel(String path, Class<T> clazz)
+			throws FileNotFoundException, InstantiationException, IllegalAccessException,
 			InvocationTargetException, NoSuchMethodException, SecurityException, IOException, TemplateFormatException, NotAnExcelFileException {
 
 		String suffiex = AbstractExcelReader.getSuffiex(path);
@@ -88,9 +52,10 @@ public class ExcelUtils {
 		} else if (OFFICE_EXCEL_V2010_SUFFIX.equals(suffiex)) {
 			er = new Excel2007Reader();
 		} else {
-			throw new NotAnExcelFileException();
+			throw new NotAnExcelFileException("file is empty or not an excel");
 		}
-		return er.read(path, clazz);
+		return (List<T>) er.read(path, clazz);
 	}
+	
 
 }
