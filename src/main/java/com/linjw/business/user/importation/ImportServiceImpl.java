@@ -2,13 +2,17 @@ package com.linjw.business.user.importation;
 
 import java.util.Collection;
 
-import com.linjw.business.utils.excel.ICheckExcel;
+import org.springframework.validation.BindingResult;
+
 import com.linjw.business.utils.excel.Student;
 
-public class ImportServiceImpl implements ImportService<Student> {
+public class ImportServiceImpl extends BaseService<Student> {
 
-	public void doImport(Collection<Student> collent, ICheckExcel<Student> checkRules) {
-		checkRules.check(collent);
+	public BindingResult doSave(Collection<Student> c) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
+	
 
 }

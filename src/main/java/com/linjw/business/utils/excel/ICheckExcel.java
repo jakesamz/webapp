@@ -2,8 +2,12 @@ package com.linjw.business.utils.excel;
 
 import java.util.Collection;
 
+import org.springframework.validation.BindingResult;
+
 public interface ICheckExcel<T> {
 	
-	void check(Collection<T> collection);
+	boolean check(Collection<T> collection);
+	
+	BindingResult getResult();
 
 }
