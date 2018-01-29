@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+
+import com.linjw.business.user.importation.ImportServiceImpl;
 
 public class Test {
 	
@@ -42,14 +45,9 @@ public class Test {
 		
 		//ICheckExcel bgtcheck = new BudgetMantianCheck();
 		//bgtcheck.check();
-		
-		ICheckExcel<Student> bgtcheck = new BudgetMantianCheck();
-		bgtcheck.check(list);
+		new ImportServiceImpl().doImport(list, new CheckStudentExcelImpl());
 	}
 	
 	
-	public void saveExcelData(Collection<T> collent, ICheckExcel<T>) {
-		
-	}
 
 }

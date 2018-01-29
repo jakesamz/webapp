@@ -1,9 +1,12 @@
 package com.linjw.business.utils.excel;
 
 import java.util.Collection;
+import java.util.Map;
 
 public interface ICheckExcel<T> {
 	
-	void check(Collection<T> collection);
+	boolean check(Collection<T> collection);
+	
+	Map<String, String> getErrorMessage();
 
 }
