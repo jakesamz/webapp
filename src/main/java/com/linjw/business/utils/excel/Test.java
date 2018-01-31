@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import com.linjw.business.user.importation.ImportServiceImpl;
 
 public class Test {
 	
@@ -45,7 +44,7 @@ public class Test {
 		
 		//ICheckExcel bgtcheck = new BudgetMantianCheck();
 		//bgtcheck.check();
-		new ImportServiceImpl().doImport(list, new CheckStudentExcelImpl());
+		new CheckStudentExcelImpl().doImport(list);
 	}
 	
 	

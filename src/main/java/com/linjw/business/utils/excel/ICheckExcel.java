@@ -5,8 +5,6 @@ import java.util.Map;
 
 public interface ICheckExcel<T> {
 	
-	boolean check(Collection<T> collection);
-	
-	Map<String, String> getErrorMessage();
+	Map<String, String> doImport(Collection<Student> collent);
 
 }
