@@ -1,29 +1,28 @@
 package com.linjw.business.user.importation;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.linjw.business.utils.excel.ICheckExcel;
-import com.linjw.business.utils.excel.Student;
 
-public abstract class AbstractCheckExcel implements ICheckExcel<Student> {
+public abstract class AbstractCheckExcel<T> implements ICheckExcel<T> {
 
-	public Map<String, String> doImport(Collection<Student> collent) {
+	public void doImport(Collection<T> collent) {
 		if(collent == null) {
 			throw new IllegalArgumentException();
 		}
 		boolean valid = check(collent);
 		
 		if(valid) {
-			return new HashMap<String, String>();
+			this.doAfterCheckSuccuss(collent);
 		}else {
-			return getErrorMessage();
+			this.doAfterCheckFailed(collent);
 		}
 	}
+
+	protected abstract boolean check(Collection<T> collent);
 	
-	protected abstract boolean check(Collection<Student> collent);
+	protected abstract void doAfterCheckSuccuss(Collection<T> collent);
 	
-	protected abstract Map<String, String> getErrorMessage();
+	protected abstract void doAfterCheckFailed(Collection<T> collent);
 	
 }

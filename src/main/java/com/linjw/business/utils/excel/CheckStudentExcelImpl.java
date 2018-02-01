@@ -1,19 +1,27 @@
 package com.linjw.business.utils.excel;
 
 import java.util.Collection;
-import java.util.Map;
 
 import com.linjw.business.user.importation.AbstractCheckExcel;
 
-public class CheckStudentExcelImpl extends AbstractCheckExcel {
+public class CheckStudentExcelImpl extends AbstractCheckExcel<Student> {
 
-	public boolean check(Collection<Student> collection) {
+	@Override
+	protected boolean check(Collection<Student> collent) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public Map<String, String> getErrorMessage() {
+	@Override
+	protected void doAfterCheckSuccuss(Collection<Student> collent) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
+	@Override
+	protected void doAfterCheckFailed(Collection<Student> collent) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

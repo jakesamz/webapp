@@ -21,13 +21,20 @@ public class Test {
 		String valueString = null;
 		
 		while ((valueString = bufReader.readLine()) != null) {
-			String sub1 = valueString.substring(0, valueString.indexOf(","));
+			/*String sub1 = valueString.substring(0, valueString.indexOf(","));
 			String sub2 = valueString.substring(valueString.indexOf("_") + 1, valueString.indexOf(","));
 			sub1 = String.format("%-30s", sub1);
-			System.out.println(sub1 + tableName + "." + sub2 + "%TYPE,");
+			System.out.println(sub1 + tableName + "." + sub2 + "%TYPE,");*/
+			format(valueString);
 		}
 
 		bufReader.close();
+	}
+	
+	public static void format(String rowValue) {
+		String copy = rowValue.substring(2);
+		System.out.println(rowValue);
+		System.out.println(copy);
 	}
 
 }
