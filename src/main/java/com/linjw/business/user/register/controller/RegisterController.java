@@ -24,7 +24,6 @@ public class RegisterController {
 	public void registerPage() {}
 
 	@RequestMapping("register")
-	@ResponseBody
 	public List<FieldError> register(
 		HttpServletRequest req,
 		HttpServletResponse resp,

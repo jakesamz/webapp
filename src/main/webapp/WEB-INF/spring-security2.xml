@@ -37,7 +37,10 @@
 	</http>
 	
 	<authentication-manager erase-credentials="false">
-		<authentication-provider user-service-ref="myUserDetailsService">
+		<authentication-provider>
+			<user-service>
+				<user name="123" password="{bcrypt}$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG" authorities="ROLE_ADMIN"/>
+			</user-service>
 		</authentication-provider>
 	</authentication-manager>
 
@@ -46,7 +49,7 @@
 	UserDetailsService纯属定义为一个获取用户的dao的接口类，无其他功能，它不校验登录信息。
 	在spring-security中，登录校验由AuthenticationManager来实现。
 	 -->
-	<beans:bean id="myUserDetailsService"
-		class="com.linjw.business.user.login.UserLoginService"/>
+	<!-- <beans:bean id="myUserDetailsService"
+		class="com.linjw.business.user.login.UserLoginService"/> -->
 		
 </beans:beans>
