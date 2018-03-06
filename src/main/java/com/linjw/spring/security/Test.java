@@ -13,7 +13,19 @@ public class Test {
 	
 	
 	public static void main(String[] args) {
-		UserDetails user = User.withDefaultPasswordEncoder().username("user").password("password").roles("USER").build();
+		
+		final int i = 1;
+		final int j = 3;
+		final Student s = new Student(1);
+		s.setAge(1);
 	}
 
+}
+
+class Student {
+	private int age;
+	public Student(int age) {
+		this.age = age;
+	}
+	public void setAge(int age) {this.age = age;}
 }

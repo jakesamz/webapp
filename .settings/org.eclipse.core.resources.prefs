@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/linjw/business/beans/Test.java=UTF-8
+encoding//src/main/java/com/linjw/business/noGen/PoIruHandleNoGenerator.java=UTF-8
 encoding//src/main/java/com/linjw/business/utils/Result.java=UTF-8
 encoding//src/main/resources/errormsg_en_US.properties=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
