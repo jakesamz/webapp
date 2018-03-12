@@ -10,4 +10,6 @@ public interface NoGenerator {
 	
 	public String generate();
 	
+	public int bits();
+	
 }

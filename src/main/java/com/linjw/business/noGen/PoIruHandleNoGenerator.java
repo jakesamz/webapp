@@ -35,4 +35,9 @@ public class PoIruHandleNoGenerator  extends AbstractNoGenerator {
 		System.out.println(String.format("%07d", 1));
 	}
 
+	public int bits() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

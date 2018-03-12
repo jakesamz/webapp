@@ -1,7 +1,9 @@
 package com.linjw.business.user.findpwd;
 
-public interface AuthenticationStrategy {
+import com.linjw.business.utils.Result;
+
+public interface AuthenticationStrategy<T> {
 	
-	void send();
+	boolean send(T t);
 
 }

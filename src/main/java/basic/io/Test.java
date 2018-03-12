@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.internal.SessionFactoryImpl;
+
 public class Test {
 
 	public static void main(String[] args) throws IOException {
-
+		
 		String inputFileName = "data.txt";
 		//String outputFileName = "data-after.txt";
 		String currentFilePath = Test.class.getResource("").getPath();

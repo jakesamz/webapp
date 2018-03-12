@@ -23,8 +23,6 @@ public abstract class AbstractNoGenerator  implements NoGenerator {
 
 	public static String DEFAULT_SEPARATOR = "-";
 	
-	public static int SWIFT_NO_BIT = 4;
-	
 	public String generate() {
 		if(snGenerator == null) {
 			Assert.isNull(snGenerator, "A swiftno generator is required.");

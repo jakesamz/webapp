@@ -1,29 +1,68 @@
 package com.linjw.business.user.findpwd;
 
+import java.io.IOException;
 import java.util.Random;
 
-public abstract class AbstractAuthenticationStrategy implements AuthenticationStrategy {
+import org.springframework.util.Assert;
 
-	public void send() {
-		String code = generate();
-		store(code);
-		doSend(code);
-	}
+import com.linjw.business.noGen.NoGenerator;
 
-	public String generate() {
-		String value = "";
-		for (int i = 0; i < this.getCodeBits(); i++) {
-			value += new Random().nextInt(10);
+public abstract class AbstractAuthenticationStrategy<T> implements AuthenticationStrategy<T> {
+
+	private NoGenerator noGenerator = new DefaultCodeGenerator();
+	
+	private String code;
+	
+	public boolean send(T t) {
+		Assert.notNull(noGenerator, "A NoGenerator is required.");
+		try {
+			this.setCode(noGenerator.generate());
+			store();
+			doSend(t);	
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
 		}
-		return value;
 	}
 	
-	public void store(String code) {
+	protected void setNoGenerator(NoGenerator noGenerator) {
+		this.noGenerator = noGenerator;
+	}
+	
+	private void store() {
 		
 	}
 	
-	public abstract void doSend(String message) ;
+	protected abstract void doSend(T t) ;
 	
-	public abstract int getCodeBits();
+	protected abstract String buildMessage() throws Exception;
+	
+	protected abstract int getCodeBits();
+
+	protected String getCode() {
+		return code;
+	}
+
+	protected void setCode(String code) {
+		this.code = code;
+	}
+	
+	private class DefaultCodeGenerator implements NoGenerator {
+
+		public String generate() {
+			String value = "";
+			for (int i = 0; i < this.bits(); i++) {
+				value += new Random().nextInt(10);
+			}
+			return value;
+		}
+
+		public int bits() {
+			// TODO Auto-generated method stub
+			return 6;
+		}
+		
+	}
 
 }

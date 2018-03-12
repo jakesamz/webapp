@@ -20,6 +20,11 @@
 	<context:component-scan base-package="com.linjw"
 		scope-resolver="com.linjw.context.resolvers.ComponentScopeResolver"></context:component-scan>
 	<mvc:annotation-driven conversion-service="conversionService"/>
+	
+	<bean id="swiftNoGeneratorImpl" class="com.linjw.business.noGen.SwiftNoGeneratorImpl">
+		<constructor-arg name="bits" value="4"></constructor-arg>
+		<constructor-arg name="userId" value="sdf"></constructor-arg>
+	</bean>
 
 	<!-- <bean id="simpleControllerTest" class="com.jake.SimpleControllerTest" 
 		/> -->

@@ -6,9 +6,22 @@
  */
 package com.linjw.business.noGen;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import java.util.List;
 
-public class SwiftNoGeneratorImpl extends AbstractSwiftNoGenerator {
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+public class SwiftNoGeneratorImpl extends AbstractSwiftNoGenerator{
+	
+	
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	PropertiesFactoryBean systemParams;
 	
 	public SwiftNoGeneratorImpl(int bits, String userId) {
 		super(bits, userId);
@@ -47,5 +60,14 @@ public class SwiftNoGeneratorImpl extends AbstractSwiftNoGenerator {
 	public String generate() {
 		return getFormattedSwiftNo();
 	}
+
+	public void afterPropertiesSet() throws Exception {
+		System.out.println(jdbcTemplate);
+		int list = jdbcTemplate.queryForObject("select count(*) from  px_s_ge_ma_roadshow_loc", Integer.class);
+		System.out.println(list);
+		System.out.println(systemParams.getObject().get("app.mail.from"));;
+	}
+	
+	
 	
 }
