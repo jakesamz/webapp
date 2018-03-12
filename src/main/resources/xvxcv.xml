@@ -27,11 +27,11 @@
 
 	<context:property-placeholder location="classpath:system-params-dev.properties" />
 
-	<!-- <bean id="systemParams" class="org.springframework.beans.factory.config.PropertiesFactoryBean"> 
+	<bean id="propertiesFactoryBean" class="org.springframework.beans.factory.config.PropertiesFactoryBean"> 
 		<property name="location" value="classpath:system-params-dev.properties"/> 
-	</bean> -->
-	<util:properties id="propertiesFactoryBean"
-		location="classpath:system-params-dev.properties" />
+	</bean>
+	<!-- <util:properties id="propertiesFactoryBean"
+		location="classpath:system-params-dev.properties" /> -->
 
 	<bean id="swiftNoGeneratorImpl" class="com.linjw.business.noGen.SwiftNoGeneratorImpl">
 		<constructor-arg name="bits" value="4"></constructor-arg>

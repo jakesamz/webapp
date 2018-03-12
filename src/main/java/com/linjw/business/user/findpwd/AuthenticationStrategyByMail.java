@@ -1,14 +1,16 @@
 package com.linjw.business.user.findpwd;
 
-import java.io.IOException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 @Component
+@Scope(WebApplicationContext.SCOPE_REQUEST)
 public class AuthenticationStrategyByMail extends AbstractAuthenticationStrategy<SimpleMailMessage> {
 
 	@Autowired
@@ -30,6 +32,7 @@ public class AuthenticationStrategyByMail extends AbstractAuthenticationStrategy
 			t.setSubject(systemParams.getValue("app.mail.resetPwd.subject"));
 			t.setSentDate(new Date());
 			t.setText(systemParams.getValue("app.resetPwd.mail.content", this.getCode()));
+			System.out.println(systemParams.getValue("app.mail.from"));
 			mailSender.send(t);
 		}catch (Exception e) {
 			e.printStackTrace();
