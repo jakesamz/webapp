@@ -36,7 +36,7 @@ public abstract class AbstractAuthenticationStrategy<T> implements Authenticatio
 	
 	protected abstract void doSend(T t) ;
 	
-	protected abstract String buildMessage() throws Exception;
+	//protected abstract String buildMessage() throws Exception;
 	
 	protected abstract int getCodeBits();
 

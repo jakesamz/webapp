@@ -12,10 +12,5 @@ public class AuthenticationStrategyByPhone extends AbstractAuthenticationStrateg
 		
 	}
 
-	@Override
-	public String buildMessage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

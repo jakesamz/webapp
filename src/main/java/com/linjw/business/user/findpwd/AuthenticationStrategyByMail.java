@@ -29,18 +29,13 @@ public class AuthenticationStrategyByMail extends AbstractAuthenticationStrategy
 			t.setFrom(systemParams.getValue("app.mail.from"));
 			t.setSubject(systemParams.getValue("app.mail.resetPwd.subject"));
 			t.setSentDate(new Date());
-			t.setText(buildMessage());
+			t.setText(systemParams.getValue("app.resetPwd.mail.content", this.getCode()));
 			mailSender.send(t);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-
-	@Override
-	public String buildMessage() throws IOException {
-		return systemParams.getValue("app.mail.resetPwd.content", this.getCode());
-	}
 
 	
 }
