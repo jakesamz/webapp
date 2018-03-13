@@ -1,5 +1,11 @@
 package com.linjw.business.user.findpwd;
 
+import java.util.Enumeration;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mail.SimpleMailMessage;
 
@@ -9,7 +15,7 @@ public class ResetPwd {
 	public void doReset() {
 		/*
 		1.store code and send time
-		2.send message;
+		2.send message, startCodeTimer;
 		3.match code.
 		4.do reset.
 		*/
@@ -26,14 +32,20 @@ public class ResetPwd {
 		/*AuthenticationStrategy<SimpleMailMessage> authenticationStrategyByMail = new AuthenticationStrategyByMail();
 		authenticationStrategyByMail.send(sm);*/
 		
-		AuthenticationStrategy<SimpleMailMessage> strategy = classPathXmlApplicationContext.getBean(AuthenticationStrategyByMail.class);
+		AbstractAuthenticationStrategy<SimpleMailMessage> strategy = classPathXmlApplicationContext.getBean(AuthenticationStrategyByMail.class);
 		strategy.send(sm);
+		//strategy.removeCode(null);
 	}
 	
 	public static void main(String[] args) {
 		send();
 	}
 	
+	private static void startCodeTimer() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public static void domatch() {
 		
 	}

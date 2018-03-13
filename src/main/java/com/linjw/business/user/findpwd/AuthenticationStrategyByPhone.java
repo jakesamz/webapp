@@ -12,5 +12,11 @@ public class AuthenticationStrategyByPhone extends AbstractAuthenticationStrateg
 		
 	}
 
+	@Override
+	public String getCodeAttrName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

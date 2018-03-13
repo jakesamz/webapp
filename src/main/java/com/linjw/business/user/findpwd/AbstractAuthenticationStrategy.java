@@ -1,9 +1,12 @@
 package com.linjw.business.user.findpwd;
 
-import java.io.IOException;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import org.springframework.util.Assert;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.linjw.business.noGen.NoGenerator;
 
@@ -11,14 +14,17 @@ public abstract class AbstractAuthenticationStrategy<T> implements Authenticatio
 
 	private NoGenerator noGenerator = new DefaultCodeGenerator();
 	
+	private CustomCodeTimer codeTimer = new DefaultCodeTimer();
+	
 	private String code;
 	
 	public boolean send(T t) {
-		Assert.notNull(noGenerator, "A NoGenerator is required.");
 		try {
-			this.setCode(noGenerator.generate());
-			store();
+			setCode(noGenerator.generate());
 			doSend(t);	
+			setCodeSession();
+			/*startCodeTimer();*/
+			codeTimer.start();
 			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -26,29 +32,63 @@ public abstract class AbstractAuthenticationStrategy<T> implements Authenticatio
 		}
 	}
 	
-	protected void setNoGenerator(NoGenerator noGenerator) {
-		this.noGenerator = noGenerator;
+
+	private void setCodeSession() {
+		HttpServletRequest request = 
+				((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		request.getSession().setAttribute(this.getCodeAttrName(), this.getCode());
 	}
 	
-	private void store() {
-		
+	protected void setNoGenerator(NoGenerator noGenerator) {
+		this.noGenerator = noGenerator;
 	}
 	
 	protected abstract void doSend(T t) ;
 	
 	//protected abstract String buildMessage() throws Exception;
 	
-	protected abstract int getCodeBits();
+	public abstract int getCodeBits();
 
-	protected String getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	protected void setCode(String code) {
+	private void setCode(String code) {
 		this.code = code;
 	}
 	
-	private class DefaultCodeGenerator implements NoGenerator {
+	public abstract String getCodeAttrName();
+
+
+	//protected abstract void setCodeAttrName(String codeAttrName);
+	
+	public CustomCodeTimer getCustomTimer() {
+		return codeTimer;
+	}
+
+
+	public void setCustomTimer(CustomCodeTimer customTimer) {
+		this.codeTimer = customTimer;
+	}
+
+
+	public class DefaultCodeTimer implements CustomCodeTimer {
+		public void start(){
+			int effectiveSeconds = 5 * 60 * 1000;
+			final Timer timer = new Timer();
+			final String codeAttrName = AbstractAuthenticationStrategy.this.getCodeAttrName();
+			timer.schedule(new TimerTask() {
+				public void run() {
+					HttpServletRequest request = 
+							((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+					request.getSession().removeAttribute(codeAttrName);
+					timer.cancel();
+				}
+			}, effectiveSeconds);
+		}
+	}
+
+	public class DefaultCodeGenerator implements NoGenerator {
 
 		public String generate() {
 			String value = "";
