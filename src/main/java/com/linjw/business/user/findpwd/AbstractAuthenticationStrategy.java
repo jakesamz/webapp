@@ -22,16 +22,21 @@ public abstract class AbstractAuthenticationStrategy<T> implements Authenticatio
 		try {
 			setCode(noGenerator.generate());
 			doSend(t);	
-			setCodeSession();
-			/*startCodeTimer();*/
-			codeTimer.start();
+			/*setCodeSession();
+			codeTimer.start();*/
 			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
+
+    public boolean sendAndContdown(T t) {
+        send(t);
+        setCodeSession();
+        codeTimer.start();
+    }
+
 
 	private void setCodeSession() {
 		HttpServletRequest request = 
