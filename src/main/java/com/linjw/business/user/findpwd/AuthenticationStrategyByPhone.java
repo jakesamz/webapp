@@ -1,15 +1,10 @@
 package com.linjw.business.user.findpwd;
 
-public class AuthenticationStrategyByPhone extends AbstractAuthenticationStrategy<PhoneMessage> {
+public class AuthenticationStrategyByPhone extends AbstractAuthenticationStrategy {
 
-	@Override
-	public int getCodeBits() {
-		return 6;
-	}
-
-	@Override
-	public void doSend(PhoneMessage t) {
-		
+	public AuthenticationStrategyByPhone(Sender sender) {
+		super(sender);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -18,5 +13,10 @@ public class AuthenticationStrategyByPhone extends AbstractAuthenticationStrateg
 		return null;
 	}
 
-	
+	public boolean sendAuthCodeMessage() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

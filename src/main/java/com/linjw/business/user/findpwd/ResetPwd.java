@@ -14,10 +14,9 @@ public class ResetPwd {
 	
 	public void doReset() {
 		/*
-		1.store code and send time
-		2.send message, startCodeTimer;
-		3.match code.
-		4.do reset.
+		- generate code, send message, startCodeTimer;
+		- match code.
+		- do reset.
 		*/
 		String sql = "update user set pwd = 'xxx' where userid = xxx";
 	}
@@ -32,8 +31,8 @@ public class ResetPwd {
 		/*AuthenticationStrategy<SimpleMailMessage> authenticationStrategyByMail = new AuthenticationStrategyByMail();
 		authenticationStrategyByMail.send(sm);*/
 		
-		AbstractAuthenticationStrategy<SimpleMailMessage> strategy = classPathXmlApplicationContext.getBean(AuthenticationStrategyByMail.class);
-		strategy.send(sm);
+		AbstractAuthenticationStrategy strategy = classPathXmlApplicationContext.getBean(AuthenticationStrategyByMail.class);
+		strategy.sendAuthCodeMessage();
 		//strategy.removeCode(null);
 	}
 	

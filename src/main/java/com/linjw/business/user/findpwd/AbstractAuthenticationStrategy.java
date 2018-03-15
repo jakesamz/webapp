@@ -10,33 +10,32 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.linjw.business.noGen.NoGenerator;
 
-public abstract class AbstractAuthenticationStrategy<T> implements AuthenticationStrategy<T> {
+public abstract class AbstractAuthenticationStrategy implements AuthenticationCodeSendingStrategy {
 
 	private NoGenerator noGenerator = new DefaultCodeGenerator();
 	
 	private CustomCodeTimer codeTimer = new DefaultCodeTimer();
 	
+	private Sender sender;
+	
 	private String code;
 	
-	public boolean send(T t) {
+	public AbstractAuthenticationStrategy(Sender sender) {
+		this.sender = sender;
+	}
+	
+	public boolean sendAuthCodeMessage() {
 		try {
 			setCode(noGenerator.generate());
-			doSend(t);	
-			/*setCodeSession();
-			codeTimer.start();*/
+			setCodeSession();
+			sender.send();	
+			codeTimer.start();
 			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
-
-    public boolean sendAndContdown(T t) {
-        send(t);
-        setCodeSession();
-        codeTimer.start();
-    }
-
 
 	private void setCodeSession() {
 		HttpServletRequest request = 
@@ -48,11 +47,7 @@ public abstract class AbstractAuthenticationStrategy<T> implements Authenticatio
 		this.noGenerator = noGenerator;
 	}
 	
-	protected abstract void doSend(T t) ;
-	
-	//protected abstract String buildMessage() throws Exception;
-	
-	public abstract int getCodeBits();
+	//public abstract int getCodeBits();
 
 	public String getCode() {
 		return code;
@@ -65,8 +60,6 @@ public abstract class AbstractAuthenticationStrategy<T> implements Authenticatio
 	public abstract String getCodeAttrName();
 
 
-	//protected abstract void setCodeAttrName(String codeAttrName);
-	
 	public CustomCodeTimer getCustomTimer() {
 		return codeTimer;
 	}

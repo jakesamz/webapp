@@ -1,7 +1,7 @@
 package com.linjw.business.user.findpwd;
 
-public interface Sender<T> {
+public interface Sender {
 	
-	boolean send(T t);
+	boolean send();
 
 }
