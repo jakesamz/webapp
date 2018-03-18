@@ -1,7 +1,18 @@
 package com.linjw.business.user.findpwd;
 
-public class AuthenticationStrategyByPhone extends AbstractAuthenticationStrategy {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.linjw.business.utils.Result;
+
+public class AuthenticationStrategyByPhone extends AbstractAuthenticationStrategy {
+	
+	@Autowired
+	private SystemParams systemParams;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
 	public AuthenticationStrategyByPhone(Sender sender) {
 		super(sender);
 		// TODO Auto-generated constructor stub
@@ -13,10 +24,14 @@ public class AuthenticationStrategyByPhone extends AbstractAuthenticationStrateg
 		return null;
 	}
 
-	public boolean sendAuthCodeMessage() {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	public Result canSend() {
+		String sql = "select sysdate - lastSendTime from user where phone = xxx";
+		Integer actualInterval = jdbcTemplate.queryForObject(sql, Integer.class);
+		boolean lessThanInterval = actualInterval < SEND_INTERVAL;
+		if(lessThanInterval) {
+			return new Result(false, systemParams.getValue("app.phone.send.lessThanInterval"));
+		}
+		return new Result(true, "");
 	}
-
-
 }

@@ -5,10 +5,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.linjw.business.noGen.NoGenerator;
+import com.linjw.business.utils.Result;
 
 public abstract class AbstractAuthenticationStrategy implements AuthenticationCodeSendingStrategy {
 
@@ -20,29 +22,38 @@ public abstract class AbstractAuthenticationStrategy implements AuthenticationCo
 	
 	private String code;
 	
+	public final static int SEND_INTERVAL = 120;
+	
 	public AbstractAuthenticationStrategy(Sender sender) {
 		this.sender = sender;
 	}
 	
-	public boolean sendAuthCodeMessage() {
+	public Result sendAuthCodeMessage() {
 		try {
-			setCode(noGenerator.generate());
-			setCodeSession();
-			sender.send();	
-			codeTimer.start();
-			return true;
+			Result canSend = canSend();
+			if(canSend.getFlag()) {
+				setCode(noGenerator.generate());
+				saveSenderCache();
+				return sender.send();	
+				//codeTimer.start();
+			}else {
+				return canSend;
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			return false;
+			return new Result(false, "ÏµÍ³³ö´í");
 		}
 	}
-
-	private void setCodeSession() {
-		/*HttpServletRequest request = 
-				((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-		request.getSession().setAttribute(this.getCodeAttrName(), this.getCode());*/
-	}
 	
+	
+
+	public abstract Result canSend();
+
+	private void saveSenderCache() {
+		//save lastSendTime and ip.
+		//
+	}
+
 	protected void setNoGenerator(NoGenerator noGenerator) {
 		this.noGenerator = noGenerator;
 	}

@@ -1,45 +1,40 @@
 package com.linjw.business.user.findpwd;
 
 import java.util.Date;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
+
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
-@Component
-@Scope("prototype")
-public class MailSender implements Sender, Command {
+import com.linjw.business.utils.Result;
+import com.linjw.context.SpringContext;
 
-	@Autowired
-	private JavaMailSenderImpl mailSender;
+public class MailSender extends AbstractSender {
 
-	@Autowired
-	private SystemParams systemParams;
+	private JavaMailSenderImpl mailSender = SpringContext.getContext().getBean(JavaMailSenderImpl.class);
 	
+	private SystemParams systemParams = SpringContext.getContext().getBean(SystemParams.class);
 	
-	private SimpleMailMessage t = new SimpleMailMessage();
+	private SimpleMailMessage mailMessage;
 	
-
-	public boolean send() {
-		try {
-			t.setFrom(systemParams.getValue("app.mail.from"));
-			//t.setTo(to);
-			//t.setSubject(systemParams.getValue("app.mail.resetPwd.subject"));
-			t.setSentDate(new Date());
-			//t.setText(content);
-			mailSender.send(t);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+	public MailSender(SimpleMailMessage mailMessage) {
+		this.mailMessage = mailMessage;
 	}
 
-
-	public Object execute() {
-		// TODO Auto-generated method stub
-		return this;
+	public Result send() {
+		try {
+			Assert.notNull(mailMessage, "mailMessage is required");
+			mailMessage.setFrom(systemParams.getValue("app.mail.from"));
+			//t.setTo(to);
+			//t.setSubject(systemParams.getValue("app.mail.resetPwd.subject"));
+			mailMessage.setSentDate(new Date());
+			//t.setText(content);
+			mailSender.send(mailMessage);
+			return new Result();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Result(false, "系统异常，请联系管理员");
+		}
 	}
 
 }
