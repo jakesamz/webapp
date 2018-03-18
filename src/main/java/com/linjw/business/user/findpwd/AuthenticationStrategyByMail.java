@@ -1,11 +1,11 @@
 package com.linjw.business.user.findpwd;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class AuthenticationStrategyByMail extends AbstractAuthenticationStrategy {
 
 	public AuthenticationStrategyByMail(Sender sender) {
@@ -16,7 +16,7 @@ public class AuthenticationStrategyByMail extends AbstractAuthenticationStrategy
 	@Override
 	public String getCodeAttrName() {
 		// TODO Auto-generated method stub
-		return null;
+		return "code";
 	}
 
 

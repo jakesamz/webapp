@@ -38,9 +38,9 @@ public abstract class AbstractAuthenticationStrategy implements AuthenticationCo
 	}
 
 	private void setCodeSession() {
-		HttpServletRequest request = 
+		/*HttpServletRequest request = 
 				((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-		request.getSession().setAttribute(this.getCodeAttrName(), this.getCode());
+		request.getSession().setAttribute(this.getCodeAttrName(), this.getCode());*/
 	}
 	
 	protected void setNoGenerator(NoGenerator noGenerator) {

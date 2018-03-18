@@ -173,6 +173,12 @@
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/cglib/cglib Command -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.2.6</version>
+		</dependency>
 
 
 	</dependencies>

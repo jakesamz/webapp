@@ -1,52 +1,26 @@
 package com.linjw.business.user.findpwd;
 
-import java.util.Enumeration;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
-
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.mail.SimpleMailMessage;
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:xvxcv.xml")
 public class ResetPwd {
 	
-	
-	public void doReset() {
-		/*
-		- generate code, send message, startCodeTimer;
-		- match code.
-		- do reset.
-		*/
-		String sql = "update user set pwd = 'xxx' where userid = xxx";
-	}
-	
-	public static void send() {
-		/*AuthenticationStrategy stragety = new AuthenticationStrategyByPhone();
-		stragety.send();*/
-		ClassPathXmlApplicationContext classPathXmlApplicationContext = 
-				new ClassPathXmlApplicationContext("classpath:xvxcv.xml"); 
-		SimpleMailMessage sm = new SimpleMailMessage();
-		sm.setTo("3178017167@qq.com");
-		/*AuthenticationStrategy<SimpleMailMessage> authenticationStrategyByMail = new AuthenticationStrategyByMail();
-		authenticationStrategyByMail.send(sm);*/
-		
-		AbstractAuthenticationStrategy strategy = classPathXmlApplicationContext.getBean(AuthenticationStrategyByMail.class);
-		strategy.sendAuthCodeMessage();
-		//strategy.removeCode(null);
-	}
-	
-	public static void main(String[] args) {
-		send();
-	}
-	
-	private static void startCodeTimer() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Autowired
+    private ApplicationContext applicationContext;
+    
+    @Autowired
+    ResetPwdService service;
+	    
 
-	public static void domatch() {
-		
+	@Test
+	public void testSend() {
+		service.send();
 	}
 	
 
