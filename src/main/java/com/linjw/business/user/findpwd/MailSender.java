@@ -22,19 +22,14 @@ public class MailSender extends AbstractSender {
 	}
 
 	public Result send() {
-		try {
-			Assert.notNull(mailMessage, "mailMessage is required");
-			mailMessage.setFrom(systemParams.getValue("app.mail.from"));
-			//t.setTo(to);
-			//t.setSubject(systemParams.getValue("app.mail.resetPwd.subject"));
-			mailMessage.setSentDate(new Date());
-			//t.setText(content);
-			mailSender.send(mailMessage);
-			return new Result();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new Result(false, "系统异常，请联系管理员");
-		}
+		Assert.notNull(mailMessage, "mailMessage is required");
+		mailMessage.setFrom(systemParams.getValue("app.mail.from"));
+		//t.setTo(to);
+		//t.setSubject(systemParams.getValue("app.mail.resetPwd.subject"));
+		mailMessage.setSentDate(new Date());
+		//t.setText(content);
+		mailSender.send(mailMessage);
+		return new Result(true, "邮箱发送成功");
 	}
 
 }

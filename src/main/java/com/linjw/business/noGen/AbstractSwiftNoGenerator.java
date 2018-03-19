@@ -6,7 +6,7 @@
  */
 package com.linjw.business.noGen;
 
-public abstract class AbstractSwiftNoGenerator implements SwiftNoGenerator {
+public abstract class AbstractSwiftNoGenerator implements NoGenerator {
 	
 
 	public static int START_VALUE = 1;

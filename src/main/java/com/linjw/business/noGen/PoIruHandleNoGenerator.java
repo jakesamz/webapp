@@ -16,7 +16,7 @@ package com.linjw.business.noGen;
  * @param userId
  * @return
  */
-public class PoIruHandleNoGenerator  extends AbstractNoGenerator {
+public class PoIruHandleNoGenerator  extends AbstractSystemAutoNoGenerator {
 	
 	/**
 	 * IRU-RFS 婢跺嫮鎮婇崡鏇炲娇 閸撳秶绱� 

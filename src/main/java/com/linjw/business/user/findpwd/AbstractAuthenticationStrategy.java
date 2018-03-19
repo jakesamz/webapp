@@ -1,22 +1,13 @@
 package com.linjw.business.user.findpwd;
 
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
+import org.springframework.util.Assert;
 import com.linjw.business.noGen.NoGenerator;
+import com.linjw.business.noGen.random.RandomNoGenerator;
 import com.linjw.business.utils.Result;
 
 public abstract class AbstractAuthenticationStrategy implements AuthenticationCodeSendingStrategy {
 
-	private NoGenerator noGenerator = new DefaultCodeGenerator();
-	
-	private CustomCodeTimer codeTimer = new DefaultCodeTimer();
+	private NoGenerator noGenerator = new RandomNoGenerator();
 	
 	private Sender sender;
 	
@@ -29,24 +20,18 @@ public abstract class AbstractAuthenticationStrategy implements AuthenticationCo
 	}
 	
 	public Result sendAuthCodeMessage() {
-		try {
-			Result canSend = canSend();
-			if(canSend.getFlag()) {
-				setCode(noGenerator.generate());
-				saveSenderCache();
-				return sender.send();	
-				//codeTimer.start();
-			}else {
-				return canSend;
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-			return new Result(false, "ÏµÍ³³ö´í");
+		Assert.notNull(noGenerator, "A Code Generator is required");
+		Assert.notNull(sender, "A sender is required");
+		Result canSend = canSend();
+		if(!canSend.getFlag()) {
+			return canSend;
 		}
+		setCode(noGenerator.generate());
+		saveSenderCache();
+		Result sent = sender.send();
+		return sent;
 	}
 	
-	
-
 	public abstract Result canSend();
 
 	private void saveSenderCache() {
@@ -70,7 +55,7 @@ public abstract class AbstractAuthenticationStrategy implements AuthenticationCo
 	
 	public abstract String getCodeAttrName();
 
-
+/*
 	public CustomCodeTimer getCustomTimer() {
 		return codeTimer;
 	}
@@ -95,23 +80,5 @@ public abstract class AbstractAuthenticationStrategy implements AuthenticationCo
 				}
 			}, effectiveSeconds);
 		}
-	}
-
-	public class DefaultCodeGenerator implements NoGenerator {
-
-		public String generate() {
-			String value = "";
-			for (int i = 0; i < this.bits(); i++) {
-				value += new Random().nextInt(10);
-			}
-			return value;
-		}
-
-		public int bits() {
-			// TODO Auto-generated method stub
-			return 6;
-		}
-		
-	}
-
+	}*/
 }

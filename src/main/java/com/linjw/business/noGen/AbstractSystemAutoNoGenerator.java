@@ -8,16 +8,16 @@ package com.linjw.business.noGen;
 
 import org.springframework.util.Assert;
 
-public abstract class AbstractNoGenerator  implements NoGenerator {
+public abstract class AbstractSystemAutoNoGenerator  implements NoGenerator {
 	
-	private SwiftNoGenerator snGenerator;
+	private AbstractSwiftNoGenerator snGenerator;
 	
 
-	public SwiftNoGenerator getSnGenerator() {
+	public NoGenerator getSnGenerator() {
 		return snGenerator;
 	}
 
-	public void setSnGenerator(SwiftNoGenerator snGenerator) {
+	public void setSnGenerator(AbstractSwiftNoGenerator snGenerator) {
 		this.snGenerator = snGenerator;
 	}
 
