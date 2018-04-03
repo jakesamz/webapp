@@ -31,7 +31,7 @@ public class EmpTag extends TagSupport {
 
 			out.println("<td width='20%'>Emp Id:</td>");
 
-			out.println("<td>" + emp.getEmpId() + "</td>");
+			out.println("<td>" + emp.getEmployeeId() + "</td>");
 
 			out.println("</tr>");
 
@@ -39,7 +39,7 @@ public class EmpTag extends TagSupport {
 
 			out.println("<td>Name:</td>");
 
-			out.println("<td>" + emp.getName() + "</td>");
+			out.println("<td>" + emp.getFirstName() + "</td>");
 
 			out.println("</tr>");
 

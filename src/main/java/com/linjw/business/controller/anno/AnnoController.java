@@ -20,7 +20,7 @@ public class AnnoController {
 		return new Test();
 	}
 	
-	@Autowired
+	//@Autowired
 	public Emp emp;
 	
 	@RequestMapping("/anno")
