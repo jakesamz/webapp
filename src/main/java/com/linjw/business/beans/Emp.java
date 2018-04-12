@@ -1,11 +1,12 @@
 package com.linjw.business.beans;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Emp {
+public class Emp implements Serializable {
 
 	private String employeeId;
 	

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,7 +32,7 @@ public class ResetPwd {
 	@RequestMapping("/reset_pwd")
 	public void testSend(String phoneNumber,
 			HttpServletRequest req, HttpServletResponse resp) {
-
+		
 		System.out.println(req.getRemoteAddr());;
 		
 		String ip = WebUtils.getRemoteRealIPAddr(req);

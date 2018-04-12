@@ -78,6 +78,8 @@
 			<artifactId>commons-text</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<!-- poi start-->
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -90,6 +92,8 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.9</version>
 		</dependency>
+		<!-- poi end-->
+		
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-scratchpad -->
 		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi-scratchpad</artifactId> 
 			<version>3.16</version> </dependency> https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl 
@@ -128,7 +132,7 @@
 			<version>2.9.9</version>
 		</dependency>
 
-
+		<!-- spring security start -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -144,6 +148,7 @@
 			<artifactId>spring-security-ldap</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		<!-- spring security end -->
 
 		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
 		<dependency>
@@ -166,7 +171,7 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
-
+		<!-- java mail start -->
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -179,14 +184,22 @@
 			<artifactId>cglib</artifactId>
 			<version>3.2.6</version>
 		</dependency>
+		<!-- java mail end -->
 		
-		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<!-- redis start -->
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
 		<dependency>
 		    <groupId>redis.clients</groupId>
 		    <artifactId>jedis</artifactId>
 		    <version>2.9.0</version>
 		</dependency>
-
+		<!-- spring integrated with redis -->
+		<dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.6.0.RELEASE</version>
+        </dependency>
+		<!-- redis end -->
 
 
 	</dependencies>
