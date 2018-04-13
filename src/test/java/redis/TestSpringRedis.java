@@ -14,14 +14,12 @@ public class TestSpringRedis extends TestSuperClass {
 	@Autowired
 	EmployeeService service;
 	
-	
 	@Test
 	public void service() {
 		
 		List<Emp> list = service.findAllEmp();
 
 		System.out.println("find list first time");
-		System.out.println(list);
 		System.out.println(list);
 		
 		list = service.findAllEmp();
@@ -32,17 +30,12 @@ public class TestSpringRedis extends TestSuperClass {
 		List<Emp> list2 = service.findAllEmpCacheable();
 		System.out.println("find list2 first time");
 		System.out.println(list2);
-
 		
 		System.out.println("find list2 2nd time");
 		
 		
 		list2 = service.findAllEmpCacheable();
 		System.out.println(list2);
-		
 	}
-	
-	
-	
 	
 }

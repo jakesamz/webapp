@@ -18,7 +18,7 @@ public class EmployeeService {
 	
 	public List<Emp> findAllEmp(){
 		
-		return jdbcTemplate.query("select * from emp", 
+		return jdbcTemplate.query("select * from emp where employee_id = 100 ", 
 				BeanPropertyRowMapper.newInstance(Emp.class));
 		
 	} 
@@ -26,7 +26,7 @@ public class EmployeeService {
 	@Cacheable(cacheNames="accountCache")
 	public List<Emp> findAllEmpCacheable(){
 		
-		return jdbcTemplate.query("select * from emp", 
+		return jdbcTemplate.query("select * from emp where employee_id = 100 ", 
 				BeanPropertyRowMapper.newInstance(Emp.class));
 		
 	}

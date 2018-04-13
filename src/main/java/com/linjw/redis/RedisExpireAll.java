@@ -5,7 +5,7 @@ import java.util.Set;
 
 import redis.clients.jedis.Jedis;
 
-public class RedisKey {
+public class RedisExpireAll {
 
 	public static void main(String[] args) {
 		// Connecting to Redis server on localhost
@@ -16,12 +16,9 @@ public class RedisKey {
 		Set<String> list = jedis.keys("*");
 
 		for (String string : list) {
-			System.out.println(string);
-			;
-			
+			jedis.del(string);
 		}
-		System.out.println(jedis.type("accountCache~keys"));;
-		System.out.println(jedis.zrange("accountCache~keys", 0, 10));
+		
 		jedis.close();
 	}
 
