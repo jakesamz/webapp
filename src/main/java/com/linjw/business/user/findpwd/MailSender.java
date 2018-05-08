@@ -13,20 +13,19 @@ public class MailSender extends AbstractSender {
 
 	private JavaMailSenderImpl mailSender = SpringContext.getContext().getBean(JavaMailSenderImpl.class);
 	
-	private SystemParams systemParams = SpringContext.getContext().getBean(SystemParams.class);
+	
+	public MailSender() {
+	}
 	
 	private SimpleMailMessage mailMessage;
 	
-	public MailSender(SimpleMailMessage mailMessage) {
-		this.mailMessage = mailMessage;
-	}
 
 	public Result send() {
-		Assert.notNull(mailMessage, "mailMessage is required");
-		mailMessage.setFrom(systemParams.getValue("app.mail.from"));
+		//Assert.notNull(mailMessage, "mailMessage is required");
+		/*mailMessage.setFrom(systemParams.getValue("app.mail.from"));
 		//t.setTo(to);
 		//t.setSubject(systemParams.getValue("app.mail.resetPwd.subject"));
-		mailMessage.setSentDate(new Date());
+		mailMessage.setSentDate(new Date());*/
 		//t.setText(content);
 		mailSender.send(mailMessage);
 		return new Result(true, "” œ‰∑¢ÀÕ≥…π¶");

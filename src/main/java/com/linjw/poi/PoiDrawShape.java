@@ -3,12 +3,14 @@ package com.linjw.poi;
 import java.io.FileOutputStream;
 
 import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
+import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFPatriarch;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFShape;
 import org.apache.poi.hssf.usermodel.HSSFShapeTypes;
 import org.apache.poi.hssf.usermodel.HSSFSimpleShape;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.RichTextString;
@@ -61,10 +63,16 @@ public class PoiDrawShape {
 		// 创建一个圆角矩形
 		HSSFSimpleShape roundRectangle = hssfPatriarch.createSimpleShape(anchor3);
 		roundRectangle.setShapeType(HSSFShapeTypes.RoundRectangle);
-		roundRectangle.setFillColor(102, 153, 255);;
 		//roundRectangle.setLineStyle(HSSFShape.LINESTYLE_DOTSYS);
 		roundRectangle.setLineWidth(25400);
-		roundRectangle.setString(new HSSFRichTextString("Write things here"));
+		HSSFRichTextString ts = new HSSFRichTextString("Write things here");
+		HSSFFont greenFont = (HSSFFont) workbook.createFont();
+		greenFont.setColor(HSSFColor.GREEN.index);
+		HSSFFont red = (HSSFFont) workbook.createFont();
+		red.setColor(HSSFColor.RED.index);
+		ts.applyFont(0, 5, greenFont);
+		ts.applyFont(6, 11, red);
+		roundRectangle.setString(ts);
 		
 		HSSFClientAnchor anchor3_1 = new HSSFClientAnchor(0, 0, 0, 0, (short) 7, 5, (short) 9, 7);
 		// 创建一个圆角矩形

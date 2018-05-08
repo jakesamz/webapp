@@ -14,7 +14,7 @@
 		<property name="success" value="buy" />
 	</bean>
 
-	<context:property-placeholder location="system-params-dev.properties" />
+	<context:property-placeholder location="classpath:system-params-dev.properties" />
 
 	<util:properties id="systemParams"
 		location="classpath:system-params-dev.properties" />

@@ -1,5 +1,7 @@
 package db;
 
+import java.util.Random;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,7 +17,7 @@ public class TestDB extends TestSuperClass {
 	@Test
 	@Transactional(rollbackFor = RuntimeException.class)
 	public void test() {
-
+		
 		// List<Emp> emp = jdbcTemplate.query("select * from emp",
 		// BeanPropertyRowMapper.newInstance(Emp.class));
 		// List<Map<String, Object>> emp = jdbcTemplate.queryForList("select * from
