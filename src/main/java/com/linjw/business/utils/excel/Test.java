@@ -1,5 +1,6 @@
 package com.linjw.business.utils.excel;
 
+import java.beans.IntrospectionException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -10,7 +11,7 @@ import java.util.Map;
 public class Test {
 	
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, IntrospectionException {
 		String filePath = ExcelUtils.class.getResource("").getPath() + "student-data.xlsx";
 		List<Student> list = null;
 		try {

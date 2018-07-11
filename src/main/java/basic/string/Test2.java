@@ -5,7 +5,9 @@ public class Test2 {
     public static void main(String args[]) {
         String x = "a";
         
-        String r = x + "a" + "b" + "c";
+        String y = "y";
+        
+        String r = x + "a" + "b" + "c" + y;
         
         String z = "a";
         

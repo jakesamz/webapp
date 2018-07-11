@@ -1,4 +1,4 @@
-package basic.thread;
+package basic.thread.ticket;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -24,7 +24,7 @@ public class TestSellTicket {
 				}
 			});
 		}*/
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 20; i++) {
 			new Thread(new Runnable() {
 				
 				@Override
@@ -40,22 +40,4 @@ public class TestSellTicket {
 		}
 	}
 
-}
-
-class Ticket {
-	int total = 100;
-	
-	public void setTotal(int total) {
-		this.total = total;
-	}
-	
-	public int getTotal() {
-		return total;
-	}
-	
-	public void sellTicket(){
-		if(total > 0) {
-			--total;
-		}
-	}
 }

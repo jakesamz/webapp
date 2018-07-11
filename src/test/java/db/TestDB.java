@@ -30,6 +30,10 @@ public class TestDB extends TestSuperClass {
 		// System.out.println(emp);
 		jdbcTemplate.update("update emp set salary = 24001 where employee_id = 100");
 		// int i = 1/0;
+		
+		String updateSql = "";
+		
+		jdbcTemplate.update(updateSql);
 	}
 
 }

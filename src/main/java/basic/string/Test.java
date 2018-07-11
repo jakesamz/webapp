@@ -12,6 +12,10 @@ public class Test {
 		String s = "a";
 		String b = Test.appendStr(s);
 		System.out.println(b);
+		
+		Class<String> cls = String.class;
+		
+		System.out.println(cls.getName());;
 	}
 	
 }

@@ -20,6 +20,20 @@ public class TestProperties {
 		
 		System.out.println(pros.getProperty("address"));
 		
+		is.close();
+		
+		pros.clear();
+		
+		InputStream is2 = TestProperties.class.getResourceAsStream("../io/this.properties");
+		
+		pros.load(is2);
+		
+		System.out.println(pros.getProperty("name"));
+		
+		System.out.println(pros.getProperty("age"));
+		
+		System.out.println(pros.getProperty("address"));
+		
 	}
 	
 

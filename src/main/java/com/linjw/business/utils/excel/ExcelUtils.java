@@ -1,10 +1,22 @@
 package com.linjw.business.utils.excel;
 
+import java.beans.IntrospectionException;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.collections.map.HashedMap;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
 
@@ -38,10 +50,11 @@ public class ExcelUtils {
 	 * @throws NoSuchMethodException
 	 * @throws TemplateFormatException
 	 * @throws NotAnExcelFileException 
+	 * @throws IntrospectionException 
 	 */
 	public static <T> List<T> readExcel(String path, Class<T> clazz)
 			throws FileNotFoundException, InstantiationException, IllegalAccessException,
-			InvocationTargetException, NoSuchMethodException, SecurityException, IOException, TemplateFormatException, NotAnExcelFileException {
+			InvocationTargetException, NoSuchMethodException, SecurityException, IOException, TemplateFormatException, NotAnExcelFileException, IllegalArgumentException, IntrospectionException {
 
 		String suffiex = AbstractExcelReader.getSuffiex(path);
 		ExcelReader er = null;
@@ -57,5 +70,23 @@ public class ExcelUtils {
 		return (List<T>) er.read(path, clazz);
 	}
 	
+	@SuppressWarnings("serial")
+	public static void export(List list, String filePath, String sheetName) throws Exception {
+		InputStream is = new FileInputStream(filePath);
+		XSSFWorkbook workbook = new XSSFWorkbook(is);
+		workbook.createCellStyle();
+		XSSFSheet sheet = workbook.createSheet(sheetName);
+		Map<String, String> headerMap = new HashMap<String, String>() {{
+			put("id","xxx");
+		}};
+		for (int rowIndex = 0; rowIndex < list.size(); rowIndex++) {
+			XSSFRow row = sheet.createRow(rowIndex);
+			for (int colIndex = 0; colIndex < headerMap.size(); colIndex++) {
+				Object obj = list.get(colIndex);
+				XSSFCell cell = row.createCell(colIndex);
+			}
+		}
+		
+	}
 
 }

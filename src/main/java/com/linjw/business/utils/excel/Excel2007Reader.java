@@ -1,5 +1,7 @@
 package com.linjw.business.utils.excel;
 
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Excel2007Reader extends AbstractExcelReader {
 
 	public <T> List<T> read(String filePath, Class<T> clazz) throws InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, IOException, TemplateFormatException, NoSuchMethodException, SecurityException {
+			IllegalArgumentException, InvocationTargetException, IOException, TemplateFormatException, NoSuchMethodException, SecurityException, IntrospectionException {
 
 		System.out.println("" + filePath);
 		InputStream is = new FileInputStream(filePath);
@@ -48,11 +50,9 @@ public class Excel2007Reader extends AbstractExcelReader {
 						String columnName = columnHeader[curColNum];
 						Field field = map.get(columnName);
 						String fieldName = field.getName();
-						String setMethodName = "set" + String.valueOf(fieldName.charAt(0)).toUpperCase()
-								+ fieldName.substring(1);
-						Method method = clazz.getMethod(setMethodName, String.class);
+						PropertyDescriptor pd = new PropertyDescriptor(fieldName, clazz);
 						xssfRow.getCell(curColNum).setCellType(Cell.CELL_TYPE_STRING);
-						method.invoke(obj, xssfRow.getCell(curColNum).getStringCellValue());
+						pd.getWriteMethod().invoke(obj, xssfRow.getCell(curColNum).getStringCellValue());
 					}
 					list.add(obj);
 				}
