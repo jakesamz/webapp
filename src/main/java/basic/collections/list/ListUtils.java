@@ -7,7 +7,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.apache.commons.beanutils.BeanPredicate;
 import org.apache.commons.beanutils.BeanPropertyValueChangeClosure;
@@ -74,7 +76,7 @@ public class ListUtils extends org.apache.commons.collections.ListUtils {
 	}
 	
 	public static void main(String[] args) {
-		/*User user = (User) CollectionUtils.find(UserList.get(), new BeanPropertyValueEqualsPredicate("id", "9587"));
+		User user = (User) CollectionUtils.find(UserList.get(), new BeanPropertyValueEqualsPredicate("id", "9587"));
 		System.out.println(user);
 		CollectionUtils.find(UserList.get(), new BeanPredicate("id", NullPredicate.getInstance()));
 		CollectionUtils.collect(UserList.get(), new Transformer() {
@@ -84,7 +86,7 @@ public class ListUtils extends org.apache.commons.collections.ListUtils {
 				// TODO Auto-generated method stub
 				return Integer.valueOf(((User)input).getId().toString());
 			}
-		});*/
+		});
 		List list = UserList.get();
 		//CollectionUtils.forAllDo(list, new BeanPropertyValueChangeClosure("id", "t"));
 		BeanPropertyValueChangeClosure closure = new BeanPropertyValueChangeClosure("id", "t");
@@ -113,6 +115,11 @@ public class ListUtils extends org.apache.commons.collections.ListUtils {
 		{
 			System.out.println(headers[i][1]);
 		}*/
+		
+		List<User> userlist = UserList.get();
+		Map<String, List<User>> groupUserMapOne = userlist.stream().collect(Collectors.groupingBy(User::getId));
+		
+		System.out.println(groupUserMapOne);
 		
 	}
 

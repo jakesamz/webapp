@@ -1,4 +1,4 @@
-package com.linjw.business.utils.excel;
+package com.linjw.business.utils.excel.imp;
 
 /**
  * Exception thrown if template's format is wrong.

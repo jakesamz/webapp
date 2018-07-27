@@ -1,4 +1,6 @@
-package com.linjw.business.utils.excel;
+package com.linjw.business.utils.excel.imp.impl;
+
+import com.linjw.business.utils.excel.imp.Column;
 
 /**
  * A testing Class

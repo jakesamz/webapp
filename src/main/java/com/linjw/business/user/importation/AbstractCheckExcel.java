@@ -2,7 +2,7 @@ package com.linjw.business.user.importation;
 
 import java.util.Collection;
 
-import com.linjw.business.utils.excel.ICheckExcel;
+import com.linjw.business.utils.excel.imp.ICheckExcel;
 
 public abstract class AbstractCheckExcel<T> implements ICheckExcel<T> {
 

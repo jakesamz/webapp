@@ -3,7 +3,7 @@ package com.linjw.business.user.importation;
 import java.util.Collection;
 import java.util.Map;
 
-import com.linjw.business.utils.excel.ICheckExcel;
+import com.linjw.business.utils.excel.imp.ICheckExcel;
 
 
 public interface ImportService<T> {

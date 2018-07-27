@@ -10,6 +10,8 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
 	default-lazy-init="true">
 
+	<context:component-scan base-package="hibernate"></context:component-scan>
+
 	<bean id="resultMessage" class="com.linjw.business.beans.ResultMessage">
 		<property name="success" value="buy" />
 	</bean>
@@ -19,7 +21,7 @@
 	<util:properties id="systemParams"
 		location="classpath:system-params-dev.properties" />
 
-	<bean id="uas.dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.dataSource.driverClassName}"></property>
 		<property name="url" value="${jdbc.uasdb.url}"></property>
@@ -28,27 +30,33 @@
 	</bean>
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="uas.dataSource"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		destroy-method="destroy">
+	    <property name="dataSource" ref="dataSource"/>
+	    <property name="configLocation" value="hibernate.cfg.test.xml"/>
 	</bean>
 
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="uas.dataSource"></property>
+		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+<!-- 
+	<tx:advice id="txAdvice">
+	</tx:advice>
 
-	<!-- 启用事务注解 -->
+ -->	
+ 	<!-- 启用事务注解 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<bean id="javamail" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="${app.mail.host}"></property>
-		<property name="username" value="${app.mail.username}"></property>
-		<property name="password" value="${app.mail.password}"></property>
-		<property name="javaMailProperties">
-			<value>
-				mail.smtp.auth=true
-				mail.smtp.timeout=25000
-			</value>
-		</property>
-	</bean>
+	
+	<!-- 
+	<aop:config>
+		<aop:pointcut expression="" id="txPointcut"/>
+		<aop:advisor advice-ref="txAdvice"/>
+	</aop:config> 
+	-->
+	
 </beans>

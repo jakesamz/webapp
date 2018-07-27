@@ -22,10 +22,21 @@
     
     <!-- <context:property-placeholder location="classpath:system_config.properties"/> -->
     
-	<bean name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<!-- 使用hibernate.cfg.xml配置文件 -->
-		<property name="configLocations">  
-			<value>classpath:/hibernate.cfg.xml</value>  
-		</property> 
-	</bean>   
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" destroy-method="destroy">
+	    <property name="dataSource" ref="dataSource"/>
+	    <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+	    <!-- <property name="hibernateProperties">
+	        <props>
+	            <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+	            <prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
+	            <prop key="hibernate.cache.use_second_level_cache">true</prop>
+	            <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+	            Hibernate Search index directory
+	            <prop key="hibernate.search.default.indexBase">${app.search.index.basedir}</prop>
+	            <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+	        </props>
+	        Turn batching off for better error messages under PostgreSQL
+	        hibernate.jdbc.batch_size=0
+	    </property> -->
+	</bean>
 </beans>

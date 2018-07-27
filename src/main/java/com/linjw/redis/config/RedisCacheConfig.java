@@ -8,8 +8,8 @@ import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@EnableCaching
+/*@Configuration
+@EnableCaching*/
 public class RedisCacheConfig extends CachingConfigurerSupport {
 
 	@Bean
