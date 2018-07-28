@@ -1,6 +1,6 @@
 package com.linjw.business.utils.excel.export;
 
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -9,7 +9,7 @@ public interface ExcelExportConfig {
 	
 	boolean printHeader();
 	
-	Map<String, Column> getHeaderMap();
+	LinkedHashMap<String, Column> getHeaderMap();
 	
 	String getOutputFilePath();
 

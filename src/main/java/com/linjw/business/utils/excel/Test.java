@@ -3,7 +3,7 @@ package com.linjw.business.utils.excel;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.linjw.business.utils.excel.export.AbstractExcelExport;
+import com.linjw.business.utils.excel.export.AbstractExcelExportConfig;
 import com.linjw.business.utils.excel.export.impl.Course;
 import com.linjw.business.utils.excel.export.impl.CourseExportConfig;
 import com.linjw.business.utils.excel.imp.impl.CheckStudentExcelImpl;

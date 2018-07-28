@@ -10,8 +10,11 @@ public class Column {
 	
 	private CellStyle cellStyle;
 	
+	public Column(String columnDisplayName) {
+		setColumnDisplayName(columnDisplayName);
+	}
+	
 	public Column(String columnDisplayName, int width) {
-		super();
 		this.columnDisplayName = columnDisplayName;
 		this.width = width;
 	}

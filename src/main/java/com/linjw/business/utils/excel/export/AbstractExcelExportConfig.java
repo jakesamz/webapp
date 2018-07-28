@@ -1,6 +1,12 @@
 package com.linjw.business.utils.excel.export;
 
-public abstract class AbstractExcelExport implements ExcelExportConfig {
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public abstract class AbstractExcelExportConfig implements ExcelExportConfig {
+	
+	private LinkedHashMap<String, Column> headerMap;
 	
 	private boolean printHeader = true;
 	
@@ -50,6 +56,14 @@ public abstract class AbstractExcelExport implements ExcelExportConfig {
 
 	public void setOutputFileName(String outputFileName) {
 		this.outputFileName = outputFileName;
+	}
+
+	public LinkedHashMap<String, Column> getHeaderMap() {
+		return headerMap;
+	}
+
+	public void setHeaderMap(Map<String, Column> headerMap) {
+		this.headerMap = headerMap;
 	}
 
 }
