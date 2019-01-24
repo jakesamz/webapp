@@ -44,7 +44,7 @@
 		<property name="prefix" value="/WEB-INF/views/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
-	<mvc:view-controller path="/vctoweclome" view-name="welcome" />
-	<mvc:view-controller path="/wtf" view-name="welcome" />
+	
+	<mvc:view-controller path="/findpwd" view-name="findpwd" />
+	
 </beans>

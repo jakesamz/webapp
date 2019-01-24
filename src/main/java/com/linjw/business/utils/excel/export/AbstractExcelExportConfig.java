@@ -63,7 +63,7 @@ public abstract class AbstractExcelExportConfig implements ExcelExportConfig {
 	}
 
 	public void setHeaderMap(Map<String, Column> headerMap) {
-		this.headerMap = headerMap;
+		//this.headerMap = headerMap;
 	}
 
 }
