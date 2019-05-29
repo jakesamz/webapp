@@ -2,31 +2,19 @@ package basic.thread.ticket;
 
 public class TestSellTicket2 {
 	
-	static int total = 20;
+	private static int total = 1000;
 	
 	public static void sell() {
 		//这里延迟1毫秒，使得结果明显 
         try { 
-            Thread.sleep(1); 
+            Thread.sleep(100); 
         } catch (InterruptedException e) { 
         } 
 		total--;
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		/*ExecutorService es = Executors.newFixedThreadPool(5);
-		
-		for (int i = 0; i < 20; i++) {
-			es.submit(
-			es.execute(new Runnable() {
-				
-				@Override
-				public void run() {
-					new TestSellTicket().sell();
-				}
-			});
-		}*/
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < total; i++) {
 			Thread t = new Thread(new Runnable() {
 				
 				@Override
@@ -34,8 +22,11 @@ public class TestSellTicket2 {
 					TestSellTicket2.sell();
 				}
 			});
-			t.join();t.start();
+			t.start();
 		}
+		while (Thread.activeCount() > 1) {
+            Thread.yield();
+        }
 		System.out.println(Thread.currentThread().getName() + ": left ticket num :" + total);
 	}
 
