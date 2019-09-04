@@ -24,7 +24,7 @@ public class StopAtPoint {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				// TODO Auto-generated catch 
 				e.printStackTrace();
 			}
 			stop = true;
@@ -39,13 +39,16 @@ public class StopAtPoint {
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-
 		Thread1 t1 = new Thread1();;
 		t1.start();
 		Thread2 t2 = new Thread2();
-
 		t2.start();
-		//t2.join();
+		
+		while(!t2.isAlive()) {
+			System.out.println("t2 is not alive");
+			System.out.println("stop = " + stop);
+			break;
+		}
 		
 		
 	}
